@@ -43,7 +43,7 @@ export default function ReviewFilter() {
   }, [currentSearchParams]);
 
   return (
-    <div className="flex justify-between cursor-pointer">
+    <div className="flex justify-between cursor-pointer rounded-lg border border-gay-200 p-4 mb-4">
       <label htmlFor="showMyReviews" className="flex items-center gap-2">
         <input
           type="checkbox"

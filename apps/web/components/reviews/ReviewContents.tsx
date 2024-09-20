@@ -21,14 +21,16 @@ export default function ReviewContents({ contents }: { contents: string }) {
       </p>
       <p
         ref={commentRef}
-        className={`${isEllipsed ? "line-clamp-2" : ""} transition-all`}
+        className={`${
+          isEllipsed ? "line-clamp-2" : ""
+        } transition-all font-medium`}
       >
         {contents}
       </p>
       {isEllipsed && (
         <button
           onClick={() => setIsEllipsed((prev) => !prev)}
-          className="text-blue-500 mt-2"
+          className="text-gray-500 mt-2 font-medium"
         >
           {isEllipsed ? "더보기" : "접기"}
         </button>

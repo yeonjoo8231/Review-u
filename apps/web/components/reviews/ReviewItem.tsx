@@ -18,10 +18,15 @@ function ReviewHeader({
   score: number;
 }) {
   return (
-    <div className="flex justify-between items-center">
+    <div className="flex justify-between items-center pb-2">
       <div className="flex items-center gap-2">
-        <UserCircleIcon className="size-8" />
-        <span>{username}</span>
+        <Link
+          href={"/user/userId"}
+          className="flex items-center gap-1 cursor-pointer"
+        >
+          <UserCircleIcon className="size-8" />
+          <span>{username}</span>
+        </Link>
         <div className="flex">
           {Array.from({ length: score })
             .fill(0)
@@ -37,7 +42,7 @@ function ReviewHeader({
       </div>
       <div>
         {/* 내 리뷰때만 보이게 */}
-        <EllipsisHorizontalIcon className="size-6" />
+        <EllipsisHorizontalIcon className="size-6 cursor-pointer" />
       </div>
     </div>
   );
@@ -46,7 +51,7 @@ function ReviewHeader({
 function ReviewTitle({ title, createAt }: { title: string; createAt: string }) {
   return (
     <div className="flex justify-between">
-      <h3>{title}</h3>
+      <h3 className="font-bold">{title}</h3>
       <p>{createAt}</p>
     </div>
   );
@@ -54,9 +59,9 @@ function ReviewTitle({ title, createAt }: { title: string; createAt: string }) {
 
 function ReviewTags({ tags }: { tags: string[] }) {
   return (
-    <div className="flex gap-2">
+    <div className="flex gap-2 pb-2">
       {tags.map((tag, i) => (
-        <Link key={i} href={`/reviews?tag=${tag}`}>
+        <Link key={i} href={`/reviews?tag=${tag}`} className="text-main">
           {`#${tag}`}
         </Link>
       ))}
@@ -77,7 +82,7 @@ export default function ReviewItem({
   link,
 }: reviewData) {
   return (
-    <div className="flex flex-col justify-between gap-10">
+    <div className="flex flex-col justify-between gap-10 rounded-lg border border-gay-200 p-4 mb-4">
       <div>
         <ReviewHeader username={username} score={score} />
         <ReviewImages images={images} />
