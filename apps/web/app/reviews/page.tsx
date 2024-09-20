@@ -1,31 +1,23 @@
 import React from "react";
 import ReviewFilter from "../../components/reviews/ReviewFilter";
 import ReviewItem from "../../components/reviews/ReviewItem";
-
-export interface review {
-  id: number;
-  username: string;
-  score: number;
-  image: string;
-  title: string;
-  createAt: string;
-  contents: string;
-  tags: string[];
-  likes: number;
-  link: string;
-}
+import { reviewData } from "../../types/review";
 
 export default async function Page() {
   const res = await fetch("http://localhost:3000/reviews");
   const result = await res.json();
   console.log(result);
 
-  const reviewData: review[] = [
+  const reviewDummy: reviewData[] = [
     {
       id: 1,
       username: "john_doe",
       score: 4,
-      image: "https://example.com/image.jpg",
+      images: [
+        "https://picsum.photos/400/300",
+        "https://picsum.photos/400/300",
+        "https://picsum.photos/400/300",
+      ],
       title: "Great Product!",
       createAt: "2024-09-18",
       contents:
@@ -39,7 +31,7 @@ export default async function Page() {
   return (
     <div>
       <ReviewFilter />
-      {reviewData.map((review) => (
+      {reviewDummy.map((review) => (
         <ReviewItem key={review.id} {...review} />
       ))}
     </div>
